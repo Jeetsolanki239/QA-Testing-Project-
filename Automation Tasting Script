@@ -1,0 +1,78 @@
+# Automation Tasting Script 
+
+package com.fb;
+
+import org.openqa.selenium.By;
+import java.util.Scanner;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class New2
+{
+	
+	public static void main(String[] args)
+	{
+		
+		Scanner a =new Scanner(System.in);
+		Scanner b =new Scanner(System.in);
+		Scanner c =new Scanner(System.in);
+		Scanner d =new Scanner(System.in);
+		
+		System.out.println("Entar tha name : ");
+		String e = a.next();
+		
+		System.out.println("Entar tha Email : ");
+		String f = a.next();
+		
+		System.out.println("Entar tha Phone : ");
+		String g = a.next();
+		
+		System.out.println("Entar tha Address : ");
+		String h = a.next();
+		
+		
+		System.setProperty("Webdriver.Crome.Driver", "C:\\Users\\jeets\\Downloads\\chromedriver-win64\\chromedriver.exe");
+
+		WebDriver ax = new ChromeDriver();
+		
+		ax.get("https://testautomationpractice.blogspot.com");
+		ax.manage().window().maximize();
+		
+		
+		ax.findElement(By.id("name")).sendKeys(e);
+		
+		
+		ax.findElement(By.id("email")).sendKeys(f);
+		ax.findElement(By.id("phone")).sendKeys(g);
+		ax.findElement(By.id("textarea")).sendKeys(h);
+		
+		
+		
+		WebElement r = ax.findElement(By.id("male"));
+		System.out.println("Befor : "+ r.isSelected());
+		if(!(r.isSelected()))
+		{
+			r.click();
+		}
+		System.out.println("After : "+ r.isSelected());
+		
+		
+		WebElement s = ax.findElement(By.id("female"));
+		
+		System.out.println("Befor : "+ s.isSelected());
+		if(!(s.isSelected()))
+		{
+			s.click();
+		}
+		System.out.println("After : "+ s.isSelected());
+		
+		
+		ax.findElement(By.id("sunday")).click();
+		
+		
+//		crome.findElement(By.id("phone")).click();
+//		crome.findElement(By.id("phone")).click();
+
+	}
+}
