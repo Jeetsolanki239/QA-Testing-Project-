@@ -1,17 +1,25 @@
-# Automation Tasting Script 
-
 package com.fb;
 
 import org.openqa.selenium.By;
+
+import java.io.Closeable;
+import java.time.Duration;
+import java.util.List;
 import java.util.Scanner;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.opentelemetry.exporter.logging.SystemOutLogRecordExporter;
 
 public class New2
 {
-	
-	public static void main(String[] args)
+
+
+	public static void main(String[] args) throws InterruptedException
 	{
 		
 		Scanner a =new Scanner(System.in);
@@ -32,7 +40,7 @@ public class New2
 		String h = a.next();
 		
 		
-		System.setProperty("Webdriver.Crome.Driver", "C:\\Users\\jeets\\Downloads\\chromedriver-win64\\chromedriver.exe");
+     	System.setProperty("Webdriver.Crome.Driver", "C:\\Users\\jeets\\Downloads\\chromedriver-win64\\chromedriver.exe");
 
 		WebDriver ax = new ChromeDriver();
 		
@@ -70,9 +78,85 @@ public class New2
 		
 		ax.findElement(By.id("sunday")).click();
 		
+		WebElement sunchek1 = ax.findElement(By.id("sunday"));
+		WebElement monchek2 = ax.findElement(By.id("monday"));
+		WebElement tueschek3 = ax.findElement(By.id("tuesday"));
+		WebElement wedchek4 = ax.findElement(By.id("wednesday"));
+		WebElement thuchek5 = ax.findElement(By.id("thursday"));
+		WebElement frichek6 = ax.findElement(By.id("friday"));
+		WebElement satchek7 = ax.findElement(By.id("saturday"));
 		
-//		crome.findElement(By.id("phone")).click();
-//		crome.findElement(By.id("phone")).click();
+		if(!sunchek1.isSelected())
+		{
+			sunchek1.click();
+		}
+		
+		if(!monchek2.isSelected())
+		{
+			monchek2.click();
+		}
+		
+		if(!tueschek3.isSelected())
+		{
+			tueschek3.click();
+		}
+		
+		if(!wedchek4.isSelected())
+		{
+			wedchek4.click();
+		}
+		
+		if(!thuchek5.isSelected())
+		{
+			thuchek5.click();
+		}
+		
+		if(!frichek6.isSelected())
+		{
+			frichek6.click();
+		}
+		
+		if(!satchek7.isSelected())
+		{
+			satchek7.click();
+		}
+		
+		System.out.println(" Day's Is Select  :  "+sunchek1);
+		System.out.println(" Day's Is Select  :  "+monchek2);
+		System.out.println(" Day's Is Select  :  "+tueschek3);
+		System.out.println(" Day's Is Select  :  "+wedchek4);
+		System.out.println(" Day's Is Select  :  "+thuchek5);
+		System.out.println(" Day's Is Select  :  "+frichek6);
+		System.out.println(" Day's Is Select  :  "+satchek7);
+		
 
+		
+
+		 ax.findElement(By.id("country")).click();
+
+	        // Wait for options to be visible
+	        WebDriverWait wait = new WebDriverWait(ax, Duration.ofSeconds(10));
+	        List<WebElement> options = wait.until(
+	            ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("country"))
+	        );
+
+	        // Print all options and click on specific one
+	        for (WebElement option : options) {
+	            String text = option.getText();
+	            System.out.println("Option: " + text);
+
+	            if (text.equals("Option 1")) { // Replace with your desired value
+	                option.click();
+	                System.out.println("Selected: " + text);
+	                break;
+	            }
+	        }
+
+	        // Optional: Close browser
+	        ax.quit();
+		
+		
+	 
 	}
 }
+
