@@ -1,0 +1,220 @@
+package com.fb;
+
+import java.time.Duration;
+import java.util.List;
+import java.util.Scanner;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+	public class XyzBank
+	{ 
+		public static void main(String[] args) throws InterruptedException 
+		{
+			
+		
+			Scanner Fname =new Scanner(System.in);
+			Scanner Lname =new Scanner(System.in);
+			Scanner Pin =new Scanner(System.in);
+			Scanner Customer  =new Scanner(System.in);
+			Scanner Currency  =new Scanner(System.in);
+			Scanner Yname  =new Scanner(System.in);
+			Scanner Damount  =new Scanner(System.in);
+			Scanner Wamount  =new Scanner(System.in);
+			
+			System.out.println("Entar Fast Name : ");
+			String f = Fname.next();
+			
+			System.out.println("Entar Last Name : ");
+			String l = Lname.next();
+			
+			System.out.println("Entar Pincode   : ");
+			String p = Pin.next();
+			
+			
+			
+			System.setProperty("Webdriver.crom.cromedrive"," C:\\Users\\jeets\\Downloads\\chromedriver-win64\\chromedriver.exe");
+			WebDriver crome = new ChromeDriver();
+			 
+			crome.get("https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login");
+			
+			Thread.sleep(1000);
+			
+			// click bank manager  
+			
+			crome.findElement(By.xpath("//button[text()='Bank Manager Login']")).click();
+			Thread.sleep(1000);
+		
+			// click add customer
+			crome.findElement(By.xpath("//button[@ng-class='btnClass1']")).click();
+			
+			// Fill in the customer details
+			Thread.sleep(1000);
+			crome.findElement(By.xpath("//input[@placeholder='First Name']")).sendKeys(f);
+			Thread.sleep(1000);
+			crome.findElement(By.xpath("//input[@placeholder='Last Name']")).sendKeys(l);
+			Thread.sleep(1000);
+			crome.findElement(By.xpath("//input[@placeholder='Post Code']")).sendKeys(p);
+			Thread.sleep(1000);
+			crome.findElement(By.xpath("//button[@type='submit']")).click();
+			Thread.sleep(3000);
+			
+			
+			crome.findElement(By.xpath("//button[@ng-class='btnClass2']")).click();
+			Thread.sleep(1000);
+			crome.findElement(By.id("userSelect")).click();
+			Thread.sleep(2000);
+
+	        // Wait for options to be visible
+	        WebDriverWait wait = new WebDriverWait(crome, Duration.ofSeconds(10));
+	        List<WebElement> options = wait.until(
+	            ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("userSelect"))
+	        );
+
+	        // Print all options and click on specific one
+	        for (WebElement option : options) {
+	            String text = option.getText();
+	            System.out.println("Option: " + text);
+
+	            if (text.equals("Option 1")) { // Replace with your desired value
+	                option.click();
+	                System.out.println("Selected: " + text);
+	                break;
+	            }
+	        }
+	        
+	        System.out.println("Enter Customer Name INDEX  : ");
+			int cus = Customer.nextInt();
+			Thread.sleep(1000);
+			
+			 // Wait for options to be visible
+	        WebDriverWait wait1 = new WebDriverWait(crome, Duration.ofSeconds(10));
+	        List<WebElement> options1 = wait1.until(
+	            ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("currency"))
+	        );
+			
+			 // Print all options and click on specific one
+	        for (WebElement option : options1) {
+	            String text = option.getText();
+	            System.out.println("Option: " + text);
+
+	            if (text.equals("Option 1")) { // Replace with your desired value
+	                option.click();
+	                System.out.println("Selected: " + text);
+	                break;
+	            }
+	        }
+			
+			
+			System.out.println("Enter Currency Name INDEX : ");
+			int cur = Currency.nextInt();
+			
+			Thread.sleep(1000);
+			
+			 WebElement customerDropdown1 = crome.findElement(By.id("userSelect"));
+	         Select customerSelect1 = new Select(customerDropdown1);
+	         customerSelect1.selectByIndex(cus);
+	         Thread.sleep(1000);
+	         
+	         WebElement customerDropdown2 = crome.findElement(By.id("currency"));
+	         Select customerSelect2 = new Select(customerDropdown2);
+	         customerSelect2.selectByIndex(cur);
+	         Thread.sleep(1000);
+			
+	         
+	         crome.findElement(By.xpath("//button[text()='Process']")).click();
+	         Thread.sleep(1000);
+	         
+	         
+	         // Switch to the alert
+	         Alert alert = crome.switchTo().alert();
+
+	         // Accept the alert (click OK)
+	         alert.accept();
+	         Thread.sleep(1000);  
+	 
+	         
+	         crome.findElement(By.xpath("//button[@ng-class='btnClass3']")).click();
+	         Thread.sleep(1000);
+	     
+	         crome.findElement(By.xpath("//button[@ng-click='home()']")).click();
+	         Thread.sleep(1000);
+	         crome.findElement(By.xpath("//button[text()='Customer Login']")).click();
+			 Thread.sleep(1000);
+			 
+			 // Wait for options to be visible
+		        WebDriverWait wait11 = new WebDriverWait(crome, Duration.ofSeconds(10));
+		        List<WebElement> options11 = wait11.until(
+		            ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("userSelect"))
+		        );
+				
+				 // Print all options and click on specific one
+		        for (WebElement option : options11) {
+		            String text = option.getText();
+		            System.out.println("Option: " + text);
+
+		            if (text.equals("Option 1")) { // Replace with your desired value
+		                option.click();
+		                System.out.println("Selected: " + text);
+		                break;
+		            }
+		        }
+				
+		        System.out.println("Entar Name INDEX   : ");
+				int yn = Yname.nextInt();
+				
+				Thread.sleep(1000);
+				
+				 WebElement customerDropdown11 = crome.findElement(By.id("userSelect"));
+		         Select customerSelect11 = new Select(customerDropdown11);
+		         customerSelect11.selectByIndex(yn);
+		         Thread.sleep(1000);
+	         
+		         
+		         crome.findElement(By.xpath("//button[text()='Login']")).click();
+				 Thread.sleep(2000);
+				 
+				 crome.findElement(By.xpath("//button[@ng-class='btnClass2']")).click();
+		         Thread.sleep(1000);
+				 
+				 System.out.println("Entar Amount To Deposited   :  ");
+				 int da = Damount.nextInt();
+					
+				 crome.findElement(By.xpath("//input[@placeholder='amount']")).sendKeys(String.valueOf(da));
+				Thread.sleep(1000);
+				
+				 crome.findElement(By.xpath("//button[text()='Deposit']")).click();
+				 Thread.sleep(1000);
+				 
+				 crome.findElement(By.xpath("//button[@ng-class='btnClass3']")).click();
+		         Thread.sleep(1000);
+				 
+				 
+				 System.out.println("Entar Amount To Withdrawl   :  ");
+				 int Wa = Wamount.nextInt();
+					
+				 crome.findElement(By.xpath("//input[@placeholder='amount']")).sendKeys(String.valueOf(Wa));
+			   	Thread.sleep(1000);
+				
+				 crome.findElement(By.xpath("//button[text()='Withdraw']")).click();
+				 Thread.sleep(1000);
+				
+				 crome.findElement(By.xpath("//button[@ng-class='btnClass1']")).click();
+		         Thread.sleep(1000);
+		         
+		         crome.findElement(By.xpath("//button[text()='Logout']")).click();
+				 Thread.sleep(1000);
+				
+				 crome.findElement(By.xpath("//button[@ng-click='home()']")).click();
+	         //crome.findElement(By.xpath("//button[text()='Customer Login']")).click();  @placeholder="amount"
+			
+		
+		}
+	
+	}
