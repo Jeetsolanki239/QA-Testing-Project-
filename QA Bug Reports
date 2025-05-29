@@ -1,0 +1,42 @@
+	• Title 
+	Required Field Indicators Present, But No Validation Message on   Submission
+	
+	• Environment
+	- Application: XYZ Bank Web Portal
+	- Page: Add Customer
+	- Browser: [ Chrome& version]
+	- OS: [ Windows 10]
+         
+	• Description
+	When attempting to add a customer, the fields marked with an asterisk
+  (*First Name, *Last Name, *Post Code) visually indicate that they are required.
+  However, the form currently allows submission without filling in these fields,
+  and no validation error message is displayed to inform the user.
+	
+	• Steps to Reproduce
+	
+		1. Navigate to the Add Customer tab.
+		2. Leave the First, Last, and Post Code fields empty.
+		3. Click the Add Customer button.
+	
+	• Expected Behavior
+		• The system should prevent submission if the required fields are empty.
+		• A validation message should be shown, such as:
+     " * This field is required" is displayed below or beside each empty required field.
+	
+	• Actual Behavior
+		• No validation message is displayed.
+		• The form appears to proceed with submission despite missing required inputs.
+
+	• Impact
+		• Users may submit incomplete data, causing inconsistencies or errors in customer records.
+		• Poor user experience due to lack of guidance on input requirements.
+	• Screenshot
+	
+	
+
+
+	• Suggested Fix
+		• Implement client-side and/or server-side validation for required fields.
+		• Display an error message:
+"* This field is required." (professionally styled and clearly visible)
